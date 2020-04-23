@@ -17,7 +17,7 @@
             Editar Plano: {{$plan->name}}
         </div>
         <div class="card-body">
-            <form action="{{route('plans.update', $plan->id)}}" method="post" class="form">
+            <form action="{{route('plans.update', $plan->url)}}" method="post" class="form">
                 @csrf
                 @method('PUT')
 

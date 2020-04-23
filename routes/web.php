@@ -12,7 +12,7 @@
 */
 
 Route::get('admin/plans/{url}/edit', 'Admin\PlanController@edit')->name('plans.edit');
-Route::put('admin/plans/{id}', 'Admin\PlanController@update')->name('plans.update');
+Route::put('admin/plans/{url}', 'Admin\PlanController@update')->name('plans.update');
 Route::get('admin/plans/create', 'Admin\PlanController@create')->name('plans.create');
 Route::any('admin/plans/search', 'Admin\PlanController@search')->name('plans.search');
 Route::delete('admin/plans/{id}', 'Admin\PlanController@destroy')->name('plans.destroy');
