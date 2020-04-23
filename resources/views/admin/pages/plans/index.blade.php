@@ -3,7 +3,13 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos <a href="{{route('plans.create')}}" class="btn btn-dark btn-sm"><i class="fa fa-plus"></i> Adicionar</a>
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Planos</li>
+    </ol>
+
+    <h1>
+        Planos <a href="{{route('plans.create')}}" class="btn btn-dark btn-sm"><i class="fa fa-plus"></i> Adicionar</a>
     </h1>
 @stop
 
