@@ -24,9 +24,9 @@
                 @forelse($plans as $plan)
                     <tr>
                         <td class="align-middle">{{$plan->name}}</td>
-                        <td class="align-middle">{{$plan->price}}</td>
+                        <td class="align-middle">R$ {{number_format($plan->price, 2, ',', '.')}}</td>
                         <td class="align-middle">
-                            <a href="#" class="btn btn-warning btn-sm">Ver</a>
+                            <a href="{{route('plans.show', ['url' => $plan->url])}}" class="btn btn-warning btn-sm">Ver</a>
                         </td>
                     </tr>
                 @empty
