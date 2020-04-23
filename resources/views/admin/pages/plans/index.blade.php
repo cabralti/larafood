@@ -7,5 +7,35 @@
 @stop
 
 @section('content')
-    <p>Listagem dos planos</p>
+    <div class="card">
+        <div class="card-header">
+            Listagem dos planos
+        </div>
+        <div class="card-body">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th width="50">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($plans as $plan)
+                    <tr>
+                        <td class="align-middle">{{$plan->name}}</td>
+                        <td class="align-middle">{{$plan->price}}</td>
+                        <td class="align-middle">
+                            <a href="#" class="btn btn-warning btn-sm">Ver</a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3" class="text-center bg-light py-3">Nenhum registro encontrado.</td>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
 @stop
