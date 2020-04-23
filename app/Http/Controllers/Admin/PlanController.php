@@ -32,10 +32,7 @@ class PlanController extends Controller
 
     public function store(StoreUpdatePlan $request)
     {
-        $data = $request->all();
-        $data['url'] = Str::slug($request->name);
-
-        $this->repository->create($data);
+        $this->repository->create($request->all());
 
         return redirect()->route('plans.index');
     }
