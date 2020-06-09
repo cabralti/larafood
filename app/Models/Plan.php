@@ -13,6 +13,12 @@ class Plan extends Model
         'description'
     ];
 
+    public function details()
+    {
+        // 1 - N
+        return $this->hasMany(DetailPlan::class);
+    }
+
     public function search($filter = null)
     {
         $results = $this
