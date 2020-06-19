@@ -12,7 +12,7 @@
     </ol>
 
     <h1>
-        Detalhes do Plano: {{$plan->name}} <a href="{{route('plans.create')}}" class="btn btn-dark btn-sm"><i
+        Detalhes do Plano: {{$plan->name}} <a href="{{route('details.plan.create', $plan->url)}}" class="btn btn-dark btn-sm"><i
                 class="fa fa-plus"></i> Adicionar</a>
     </h1>
 @stop
