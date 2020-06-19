@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     /**
      * Routes Details Plans
      */
+    Route::put('plans/{url}/details/{id}', 'DetailPlanController@update')->name('details.plan.update');
+    Route::get('plans/{url}/details/{id}/edit', 'DetailPlanController@edit')->name('details.plan.edit');
     Route::post('plans/{url}/details', 'DetailPlanController@store')->name('details.plan.store');
     Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');
     Route::get('plans/{url}/details', 'DetailPlanController@index')->name('details.plan.index');

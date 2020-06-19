@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <label for="">Nome:</label>
-    <input type="text" name="name" placeholder="Nome" class="form-control">
+    <input type="text" name="name" placeholder="Nome" class="form-control" value="{{$detail->name ?? old('name')}}">
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-info">
