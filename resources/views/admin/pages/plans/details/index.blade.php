@@ -12,7 +12,8 @@
     </ol>
 
     <h1>
-        Detalhes do Plano: {{$plan->name}} <a href="{{route('details.plan.create', $plan->url)}}" class="btn btn-dark btn-sm"><i
+        Detalhes do Plano: {{$plan->name}} <a href="{{route('details.plan.create', $plan->url)}}"
+                                              class="btn btn-dark btn-sm"><i
                 class="fa fa-plus"></i> Adicionar</a>
     </h1>
 @stop
@@ -20,6 +21,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+
+            @include('admin.includes.alerts')
+
             <table class="table table-condensed">
                 <thead>
                 <tr>
@@ -34,7 +38,7 @@
                         <td class="align-middle">
                             <a href="{{route('details.plan.edit', [$plan->url, $detail->id])}}"
                                class="btn btn-info btn-sm">Editar</a>
-                            <a href="{{route('plans.show', ['url' => $plan->url])}}"
+                            <a href="{{route('details.plan.show', [$plan->url, $detail->id])}}"
                                class="btn btn-warning btn-sm">Ver</a>
                         </td>
                     </tr>

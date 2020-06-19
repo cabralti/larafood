@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     /**
      * Routes Details Plans
      */
+    Route::delete('plans/{url}/details/{id}', 'DetailPlanController@destroy')->name('details.plan.destroy');
+    Route::get('plans/{url}/details/{id}', 'DetailPlanController@show')->name('details.plan.show');
     Route::put('plans/{url}/details/{id}', 'DetailPlanController@update')->name('details.plan.update');
     Route::get('plans/{url}/details/{id}/edit', 'DetailPlanController@edit')->name('details.plan.edit');
     Route::post('plans/{url}/details', 'DetailPlanController@store')->name('details.plan.store');
