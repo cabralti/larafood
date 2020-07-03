@@ -1,16 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfis')
+@section('title', 'Permissões do perfil {$profile->name}')
 
 @section('content_header')
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Perfis</li>
+        <li class="breadcrumb-item active"><a href="{{route('profiles.index')}}">Perfis</a></li>
+        <li class="breadcrumb-item active">Permissões</li>
     </ol>
 
     <h1>
-        Perfis <a href="{{route('profiles.create')}}" class="btn btn-dark btn-sm"><i class="fa fa-plus"></i>
-            Adicionar</a>
+        Permissões do perfil: <b>{{$profile->name}}</b>
+        <a href="{{route('profiles.create')}}" class="btn btn-dark btn-sm">
+            <i class="fa fa-plus"></i> Adicionar
+        </a>
     </h1>
 @stop
 
@@ -33,15 +36,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($profiles as $profile)
+                @forelse($permissions as $permission)
                     <tr>
-                        <td class="align-middle">{{$profile->name}}</td>
+                        <td class="align-middle">{{$permission->name}}</td>
                         <td class="align-middle">
-                            <a href="{{route('profiles.edit', $profile->id)}}" class="btn btn-info btn-sm">Editar</a>
-                            <a href="{{route('profiles.show', $profile->id)}}" class="btn btn-warning btn-sm">Ver</a>
-                            <a href="{{route('profiles.permissions', $profile->id)}}" class="btn btn-dark btn-sm">
-                                <i class="fas fa-lock"></i> Permissões
-                            </a>
+                            <a href="{{route('profiles.edit', $permission->id)}}" class="btn btn-info btn-sm">Editar</a>
+                            <a href="{{route('profiles.show', $permission->id)}}" class="btn btn-warning btn-sm">Ver</a>
                         </td>
                     </tr>
                 @empty
@@ -54,9 +54,9 @@
         </div>
         <div class="card-footer">
             @if(isset($filters))
-                {!! $profiles->appends($filters)->links() !!}
+                {!! $permissions->appends($filters)->links() !!}
             @else
-                {!! $profiles->links() !!}
+                {!! $permissions->links() !!}
             @endif
         </div>
     </div>

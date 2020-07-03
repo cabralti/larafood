@@ -26,6 +26,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('permissions', 'ACL\PermissionController');
 
     /**
+     * Permissions x Profiles
+     */
+    Route::get('profiles/{id}/permissions', 'ACL\PermissionProfileController@permissions')->name('profiles.permissions');
+
+    /**
      * Routes Details Plans
      */
     Route::delete('plans/{url}/details/{id}', 'DetailPlanController@destroy')->name('details.plan.destroy');
