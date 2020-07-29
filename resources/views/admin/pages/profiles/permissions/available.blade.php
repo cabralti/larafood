@@ -17,7 +17,8 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{route('profiles.permissions.available', $profile->id)}}" method="post" class="form form-inline">
+            <form action="{{route('profiles.permissions.available', $profile->id)}}" method="post"
+                  class="form form-inline">
                 @csrf
                 <input type="text" name="filter" class="form-control" placeholder="Nome"
                        value="{{$filters['filter'] ?? ''}}">
@@ -51,7 +52,7 @@
                     <tr>
                         <td colspan="2">
                             <button type="submit" class="btn btn-success">
-                                Vincular
+                                <i class="fa fa-link"></i> Vincular
                             </button>
                         </td>
                     </tr>
