@@ -29,7 +29,7 @@
                 <thead>
                 <tr>
                     <th>Nome</th>
-                    <th width="150">Ações</th>
+                    <th width="250">Ações</th>
                 </tr>
                 </thead>
                 <tbody>

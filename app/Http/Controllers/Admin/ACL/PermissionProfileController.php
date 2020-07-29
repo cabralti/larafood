@@ -17,6 +17,10 @@ class PermissionProfileController extends Controller
         $this->permission = $permission;
     }
 
+    /**
+     * @param $idProfile
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function permissions($idProfile)
     {
         $profile = $this->profile->find($idProfile);
@@ -31,5 +35,40 @@ class PermissionProfileController extends Controller
             'profile' => $profile,
             'permissions' => $permissions
         ]);
+    }
+
+    public function permissionsAvailable($idProfile)
+    {
+        $profile = $this->profile->find($idProfile);
+
+        if (!$profile) {
+            return redirect()->back();
+        }
+
+        $permissions = $this->permission->paginate();
+
+        return view('admin.pages.profiles.permissions.available', [
+            'profile' => $profile,
+            'permissions' => $permissions
+        ]);
+    }
+
+    public function attachPermissionsProfile(Request $request, $idProfile)
+    {
+        $profile = $this->profile->find($idProfile);
+
+        if (!$profile) {
+            return redirect()->back();
+        }
+
+        if (!$request->permissions || count($request->permissions) < 1) {
+            return redirect()
+                ->back()
+                ->with('warning', 'Precisa escolher pelo menos uma permissão');
+        }
+
+        $profile->permissions()->attach($request->permissions);
+
+        return redirect()->route('profiles.permissions', $profile->id);
     }
 }

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Permissões do perfil {$profile->name}")
+@section('title', "Permissões disponíveis perfil {$profile->name}")
 
 @section('content_header')
     <ol class="breadcrumb float-sm-right">
@@ -10,10 +10,7 @@
     </ol>
 
     <h1>
-        Permissões do perfil: <b>{{$profile->name}}</b>
-        <a href="{{route('profiles.permissions.available', $profile->id)}}" class="btn btn-dark btn-sm">
-            <i class="fa fa-plus"></i> Adicionar
-        </a>
+        Permissões disponíveis perfil: <b>{{$profile->name}}</b>
     </h1>
 @stop
 
@@ -28,27 +25,37 @@
             </form>
         </div>
         <div class="card-body">
+            @include('admin.includes.alerts')
             <table class="table table-condensed">
                 <thead>
                 <tr>
+                    <th>#</th>
                     <th>Nome</th>
-                    <th width="150">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($permissions as $permission)
+                <form action="{{route('profiles.permissions.attach', $profile->id)}}" method="post">
+                    @csrf
+                    @forelse($permissions as $permission)
+                        <tr>
+                            <td width="50">
+                                <input type="checkbox" name="permissions[]" value="{{$permission->id}}">
+                            </td>
+                            <td class="align-middle">{{$permission->name}}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center bg-light py-3">Nenhum registro encontrado.</td>
+                        </tr>
+                    @endforelse
                     <tr>
-                        <td class="align-middle">{{$permission->name}}</td>
-                        <td class="align-middle">
-                            <a href="{{route('profiles.edit', $permission->id)}}" class="btn btn-info btn-sm">Editar</a>
-                            <a href="{{route('profiles.show', $permission->id)}}" class="btn btn-warning btn-sm">Ver</a>
+                        <td colspan="2">
+                            <button type="submit" class="btn btn-success">
+                                Vincular
+                            </button>
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="3" class="text-center bg-light py-3">Nenhum registro encontrado.</td>
-                    </tr>
-                @endforelse
+                </form>
                 </tbody>
             </table>
         </div>
