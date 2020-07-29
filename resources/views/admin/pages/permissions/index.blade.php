@@ -29,7 +29,7 @@
                 <thead>
                 <tr>
                     <th>Nome</th>
-                    <th width="150">Ações</th>
+                    <th width="250">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +41,8 @@
                                class="btn btn-info btn-sm">Editar</a>
                             <a href="{{route('permissions.show', $permission->id)}}"
                                class="btn btn-warning btn-sm">Ver</a>
+                            <a href="{{route('permissions.profiles', $permission->id)}}"
+                               class="btn btn-primary btn-sm"><i class="fas fa-address-book"></i> Perfis</a>
                         </td>
                     </tr>
                 @empty
