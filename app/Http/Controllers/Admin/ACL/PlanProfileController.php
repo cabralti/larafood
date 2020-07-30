@@ -30,4 +30,21 @@ class PlanProfileController extends Controller
             'profiles' => $profiles
         ]);
     }
+
+    public function profilesAvailable(Request $request, $idPlan)
+    {
+        if (!$plan = $this->plan->find($idPlan)) {
+            return redirect()->back();
+        }
+
+        $filters = $request->except('_token');
+
+        $profiles = $plan->profilesAvailable($request->filter);
+
+        return view('admin.pages.plans.profiles.available', [
+            'plan' => $plan,
+            'profiles' => $profiles,
+            'filters' => $filters
+        ]);
+    }
 }

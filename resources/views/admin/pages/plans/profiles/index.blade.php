@@ -11,7 +11,7 @@
 
     <h1>
         Perfis do plano: <b>{{$plan->name}}</b>
-        <a href="{{route('profiles.permissions.available', $plan->id)}}" class="btn btn-dark btn-sm">
+        <a href="{{route('plans.profiles.available', $plan->id)}}" class="btn btn-dark btn-sm">
             <i class="fa fa-plus"></i> Adicionar
         </a>
     </h1>

@@ -23,6 +23,24 @@ class Plan extends Model
         return $this->belongsToMany(Profile::class);
     }
 
+    /**
+     * Profile not linked with this profile
+     */
+    public function profilesAvailable($filter = null)
+    {
+        $profiles = Profile::whereNotIn('profiles.id', function ($query) {
+            $query->select('plan_profile.profile_id');
+            $query->from('plan_profile');
+            $query->where('plan_profile.plan_id', $this->id);
+        })->where(function ($queryFilter) use ($filter) {
+            if ($filter) {
+                $queryFilter->where('profiles.name', 'LIKE', "%{$filter}%");
+            }
+        })->paginate();
+
+        return $profiles;
+    }
+
     public function details()
     {
         // 1 - N
