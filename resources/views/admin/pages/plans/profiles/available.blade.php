@@ -6,6 +6,7 @@
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{route('plans.index')}}">Planos</a></li>
+        <li class="breadcrumb-item active"><a href="{{route('plans.profiles', $plan->id)}}">{{$plan->name}}</a></li>
         <li class="breadcrumb-item active">Perfis</li>
     </ol>
 
@@ -40,7 +41,7 @@
                     @forelse($profiles as $profile)
                         <tr>
                             <td width="50">
-                                <input type="checkbox" name="permissions[]" value="{{$profile->id}}">
+                                <input type="checkbox" name="profiles[]" value="{{$profile->id}}">
                             </td>
                             <td class="align-middle">{{$profile->name}}</td>
                         </tr>

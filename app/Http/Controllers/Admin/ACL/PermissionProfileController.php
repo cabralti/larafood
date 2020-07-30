@@ -95,7 +95,7 @@ class PermissionProfileController extends Controller
         $permission = $this->permission->find($idPermission);
 
         if (!$profile || !$permission) {
-            return rdirect()->back();
+            return redirect()->back();
         }
 
         $profile->permissions()->detach($permission);

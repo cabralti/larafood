@@ -47,4 +47,34 @@ class PlanProfileController extends Controller
             'filters' => $filters
         ]);
     }
+
+    public function attachProfilesPlan(Request $request, $idPlan)
+    {
+        if (!$plan = $this->plan->find($idPlan)) {
+            return redirect()->back();
+        }
+
+        if (!$request->profiles || count($request->profiles) < 1) {
+            return redirect()->back()->with('warning', 'Precisa escolher pelo menos um perfil');
+        }
+
+        $plan->profiles()->attach($request->profiles);
+
+        return redirect()->route('plans.profiles', $plan->id);
+    }
+
+    public function detachProfilesPlan($idPlan, $idProfile)
+    {
+        $plan = $this->plan->find($idPlan);
+        $profile = $this->profile->find($idProfile);
+
+        if (!$plan || !$profile) {
+            return redirect()->back();
+        }
+
+        $plan->profiles()->detach($profile);
+        return redirect()
+            ->route('plans.profiles', $plan->id)
+            ->with('message', "Perfil {$profile->name} desvinculado com sucesso!");
+    }
 }

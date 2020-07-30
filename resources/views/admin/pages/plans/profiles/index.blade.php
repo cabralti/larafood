@@ -20,6 +20,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            @include('admin.includes.alerts')
             <table class="table table-condensed">
                 <thead>
                 <tr>
@@ -32,7 +33,7 @@
                     <tr>
                         <td class="align-middle">{{$profile->name}}</td>
                         <td class="align-middle">
-                            <a href="{{route('profiles.permissions.detach', [$profile->id, $profile->id])}}"
+                            <a href="{{route('plans.profiles.detach', [$plan->id, $profile->id])}}"
                                class="btn btn-danger btn-sm"><i class="fa fa-unlink"></i> Desvincular</a>
                         </td>
                     </tr>
