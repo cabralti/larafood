@@ -26,6 +26,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('permissions', 'ACL\PermissionController');
 
     /**
+     * Plans x Profiles
+     */
+    Route::get('plans/{id}/profiles', 'ACL\PlanProfileController@profiles')->name('plans.profiles');
+
+    /**
      * Permissions x Profiles
      */
     Route::get('profiles/{id}/permissions/{idPermission}/detach', 'ACL\PermissionProfileController@detachPermissionsProfile')->name('profiles.permissions.detach');

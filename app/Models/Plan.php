@@ -13,6 +13,16 @@ class Plan extends Model
         'description'
     ];
 
+    /**
+     * Get Profiles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
+
     public function details()
     {
         // 1 - N
